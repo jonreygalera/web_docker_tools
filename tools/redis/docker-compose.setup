@@ -1,15 +1,14 @@
 version: '3.7'
 
 services:
-  redis62:
-    image: redis:6.2
-    container_name: redis62
+  redis<suffix>:
+    image: redis:<version>
+    container_name: redis<suffix>
     restart: always
     ports:
       - 6379:6379
     networks:
       - nginx_proxy-network
-
 
 networks:
   nginx_proxy-network:

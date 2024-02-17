@@ -1,9 +1,9 @@
 version: '3.7'
 
 services:
-  mariadb104:
-    image: mariadb:10.4
-    container_name: mariadb104
+  mariadb<suffix>:
+    image: mariadb:<version>
+    container_name: mariadb<suffix>
     ports:
       - 4000:3306
     volumes:
@@ -14,7 +14,6 @@ services:
       - MYSQL_USER=dev_user
     networks:
       - nginx_proxy-network
-
 
 networks:
   nginx_proxy-network:

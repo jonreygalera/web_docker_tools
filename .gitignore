@@ -1,3 +1,5 @@
 /nginx/conf.d/disabled/*.conf
 /tools/nginx/conf.d/*.conf
 /tools/mariadb/mariadb
+/tools/mariadb/*.yml
+/tools/redis/*.yml
