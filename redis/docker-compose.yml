@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  redis62:
+    image: redis:6.2
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - nginx-docker_proxy-network
+
+
+networks:
+  nginx-docker_proxy-network:
+    external: true
