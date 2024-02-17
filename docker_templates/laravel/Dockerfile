@@ -7,23 +7,31 @@ RUN composer install --ignore-platform-reqs --no-interaction --no-plugins --no-s
 
 # Application
 FROM public.ecr.aws/h1y8m9v5/nmsph-php8.2:latest
-ENV HTTP_LOCAL_CONF nmsapps.local.conf
+ENV HTTP_CONF website.conf
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /app
 
-# Apache, Supervisord, Etc... Configuration
+# Etc
 RUN echo "alias artisan='sudo -u www-data php artisan'" >> /root/.bashrc \
     && echo "alias composer='sudo -u www-data composer'" >> /root/.bashrc
-COPY ./playbook/conf/supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY ./playbook/conf/httpd_conf/$HTTP_LOCAL_CONF /etc/apache2/sites-available/
+
+# Supervisor    
+COPY ./configurations/supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Apache
+COPY ./configurations/httpd_conf/$HTTP_CONF /etc/apache2/sites-available/
+
+# Redis
+#COPY ./configurations/conf/redis/redis.conf /etc/redis/redis.conf
+
 RUN a2enmod rewrite headers && service apache2 restart
-RUN a2dissite 000-default.conf && a2ensite $HTTP_LOCAL_CONF
+RUN a2dissite 000-default.conf && a2ensite $HTTP_CONF
 
 # Cron conf
-COPY --chmod=644 ./playbook/conf/cron/scheduler /etc/cron.d/scheduler
+COPY --chmod=644 ./configurations/cron/scheduler /etc/cron.d/scheduler
 RUN crontab -u www-data /etc/cron.d/scheduler
 
 # Deploy Site

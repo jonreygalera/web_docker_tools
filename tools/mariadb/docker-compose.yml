@@ -3,9 +3,9 @@ version: '3.7'
 services:
   mariadb104:
     image: mariadb:10.4
-    container_name: mariadb
+    container_name: mariadb104
     ports:
-      - 4001:3306
+      - 4000:3306
     volumes:
       - ./mariadb:/var/lib/mysql
     environment:

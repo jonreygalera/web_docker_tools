@@ -3,9 +3,9 @@ version: '3.7'
 services:
   nmsapps:
     build:
-      dockerfile: Laravel.Dockerfile
+      dockerfile: Dockerfile
       context: .
-    container_name: project_template
+    container_name: websitelocal
     restart: always
     volumes:
       - ./src:/app
