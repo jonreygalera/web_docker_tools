@@ -7,7 +7,7 @@ RUN composer install --ignore-platform-reqs --no-interaction --no-plugins --no-s
 
 # Application
 FROM public.ecr.aws/h1y8m9v5/nmsph-php8.2:latest
-ENV HTTP_CONF website.conf
+ENV HTTP_CONF <container_name>.conf
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

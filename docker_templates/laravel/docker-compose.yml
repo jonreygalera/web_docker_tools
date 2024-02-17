@@ -1,11 +1,11 @@
 version: '3.7'
 
 services:
-  nmsapps:
+  <container_name>:
     build:
       dockerfile: Dockerfile
       context: .
-    container_name: websitelocal
+    container_name: <container_name>
     restart: always
     volumes:
       - ./src:/app

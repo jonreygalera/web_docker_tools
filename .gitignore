@@ -3,3 +3,6 @@
 /tools/mariadb/mariadb
 /tools/mariadb/*.yml
 /tools/redis/*.yml
+/repositories/*
+!/repositories/config
+!/repositories/index.html
