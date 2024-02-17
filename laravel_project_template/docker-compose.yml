@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  nmsapps:
+    build:
+      dockerfile: Laravel.Dockerfile
+      context: .
+    container_name: project_template
+    restart: always
+    volumes:
+      - ./src:/app
+      - /app/vendor
+    networks:
+      - nginx_proxy-network
+    
+networks:
+  nginx_proxy-network:
+    external: true
