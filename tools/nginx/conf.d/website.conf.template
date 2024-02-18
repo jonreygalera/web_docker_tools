@@ -1,9 +1,9 @@
 server {
   listen 80;
-  server_name website.local;
+  server_name <server_name>.local;
 
   location / {
-    proxy_pass         http://websitelocal;
+    proxy_pass         http://<server_name>;
     proxy_redirect     off;
     proxy_set_header   Host $host;
     proxy_set_header   X-Real-IP $remote_addr;

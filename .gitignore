@@ -1,8 +1,9 @@
 /nginx/conf.d/disabled/*.conf
 /tools/nginx/conf.d/*.conf
-/tools/mariadb/mariadb
+/tools/mariadb/temp/*
 /tools/mariadb/*.yml
 /tools/redis/*.yml
+/tools/nginx/*.yml
 /repositories/*
 !/repositories/config
 !/repositories/index.html

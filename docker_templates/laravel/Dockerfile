@@ -19,19 +19,19 @@ RUN echo "alias artisan='sudo -u www-data php artisan'" >> /root/.bashrc \
     && echo "alias composer='sudo -u www-data composer'" >> /root/.bashrc
 
 # Supervisor    
-COPY ./configurations/supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./playbook/supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Apache
-COPY ./configurations/httpd_conf/$HTTP_CONF /etc/apache2/sites-available/
+COPY ./playbook/httpd_conf/$HTTP_CONF /etc/apache2/sites-available/
 
 # Redis
-#COPY ./configurations/conf/redis/redis.conf /etc/redis/redis.conf
+#COPY ./playbook/conf/redis/redis.conf /etc/redis/redis.conf
 
 RUN a2enmod rewrite headers && service apache2 restart
 RUN a2dissite 000-default.conf && a2ensite $HTTP_CONF
 
 # Cron conf
-COPY --chmod=644 ./configurations/cron/scheduler /etc/cron.d/scheduler
+COPY --chmod=644 ./playbook/cron/scheduler /etc/cron.d/scheduler
 RUN crontab -u www-data /etc/cron.d/scheduler
 
 # Deploy Site

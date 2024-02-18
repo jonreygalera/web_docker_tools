@@ -1,6 +1,0 @@
-# You can copy to supervisord.conf
-# laravel
-[program:queue-worker]
-command=php /app/artisan queue:work
-autostart=true
-autorestart=true

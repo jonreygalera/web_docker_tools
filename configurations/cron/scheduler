@@ -1,0 +1,2 @@
+ * * * * * www-data /usr/local/bin/php /app/artisan schedule:run > /app/storage/php_artisan_schedule_last_run.txt
+ 
