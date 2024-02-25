@@ -224,6 +224,7 @@ createLaravel() {
   sed -i "s/<container_name>/$1/g" ./docker-compose.yml 
 
   cp $REPOSITORIES_DIR/config/template.code-workspace "$1.code-workspace"
+  cp $REPOSITORIES_DIR/config/setup-project.sh "$1.setup.sh"
   copyConfigurations $1 $REPOSITORY_DIR
 
   cd $REPOSITORY_DIR

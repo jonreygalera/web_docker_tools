@@ -6,7 +6,7 @@ COPY ./src/composer.lock /app/composer.lock
 RUN composer install --ignore-platform-reqs --no-interaction --no-plugins --no-scripts --prefer-dist
 
 # Application
-FROM public.ecr.aws/h1y8m9v5/nmsph-php8.2:latest
+FROM mrey7777/wdt-php:8.2-apache
 ENV HTTP_CONF <container_name>.conf
 
 # Install Composer
